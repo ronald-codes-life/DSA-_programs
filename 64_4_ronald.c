@@ -1,37 +1,35 @@
-#include <stdio.h>
-void rollcall(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+#include<stdio.h>
+#include<string.h>
+struct student{
+    int rollno;
+    char name[100];
+    float p;
+};
+void main(){
+    int i,j,t=0;
+    printf("\nEnter the Student info: \n");
+    for(i=0;i<5;i++){
+        printf("Student No. %d\n",i+1);
+        printf("Enter Roll No.");
+        scanf("%d",&s[i].rollno);
+        printf("Enter Name:");
+        scanf("%s",&s[i].name);
+        printf("Enter Percentage:");
+        scanf("%f",&s[i].p);
+    }
+    for(i=0;i<5;i++){
+        for(j=0;j<i+1;j++){
+            if(s[i].rollno<s[j].rollno){
+                t=s[i].rollno;
+                s[i].rollno=s[j].rollno;
+                s[j].rollno=t;
             }
         }
     }
-}
-
-int main() {
-    int n;
-
-    printf("Enter the number of students: ");
-    scanf("%d", &n);
-
-    int rollNumbers[n];
-    float percentages[n];
-    for (int i = 0; i < n; i++) {
-        printf("Enter Roll Number for student %d: ", i + 1);
-        scanf("%d", &rollNumbers[i]);
-
-        printf("Enter Percentage for student %d: ", i + 1);
-        scanf("%f", &percentages[i]);
+    printf("Student List:\n");
+    for(i=0;i<5;i++){
+        printf("\nRoll No. : %d",s[i].rollno);
+        printf("\nName: %s",s[i].name);
+        printf("\nPercentage: %f",s[i].p);
     }
-    rollcall(rollNumbers, n);
-   
-    printf("\nRoll Numbers in Ascending Order:\n");
-    for (int i = 0; i < n; i++) {
-        printf("\n%d-%f", rollNumbers[i],percentages[i]);
-    }
-
-    return 0;
 }
